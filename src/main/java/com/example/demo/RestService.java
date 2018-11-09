@@ -16,21 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestService {
 	@Autowired
 	StudentRepository repo;
-	@PostMapping("/student")
+	@PostMapping("/addStudent")
 	public  String saveStudent(@RequestBody Student student) {
 		repo.save(student);
 		return "Student added successfully with id:" +student.getId();
 	}
-	@DeleteMapping("/student/{id}")
+	@DeleteMapping("/deleteStudent/{id}")
 	public String deleteStudent(@PathVariable int id) {
 		repo.deleteById(id);
 		return "student deleted successfully with id:"+id;
 	}
-	@GetMapping("/student")
+	@GetMapping("/listOfStudents")
 	public  List<Student> listofStudent() {
 		return repo.findAll();
 	}
-	@PutMapping("/update/{id}")
+	@PutMapping("/updateStudent/{id}")
 	public String updateStudent(@RequestBody  Student student) {
 		repo.save(student);
 		return "student updated successfully with id:"+student.getId();
